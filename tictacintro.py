@@ -139,8 +139,13 @@ o_win = 0
 
 class Toplevel2:
 
+    def reset_counter(self):
+        x_win = 0
+        o_win = 0
+        self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
+
     def doRefresh(self):
-        global bclick
+        global bclick, x_win, o_win
         self.Button1['text'] = ''
         self.Button2['text'] = ''
         self.Button3['text'] = ''
@@ -173,6 +178,8 @@ class Toplevel2:
                 fmsgbox.showinfo("Player X", "Winner is Player X!!!")
             else:
                 fmsgbox.showinfo("Player X", f"Winner is {self.Entry1.get()} !!!")
+            x_win = 0
+            o_win = 0
             x_win += 1
             self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
             self.doRefresh()
@@ -188,6 +195,8 @@ class Toplevel2:
                 fmsgbox.showinfo("Player O", "Winner is Player O!!!")
             else:
                 fmsgbox.showinfo("Player O", f"Winner is {self.Entry2.get()} !!!")
+            x_win = 0
+            o_win = 0
             o_win += 1
             self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
             self.doRefresh()
@@ -490,6 +499,19 @@ class Toplevel2:
         self.Button10.configure(highlightcolor="black")
         self.Button10.configure(text='''Quit!''')
         self.Button10.configure(pady="0", command=root.destroy)
+
+        self.Button11 = tk.Button(top)
+        self.Button11.place(relx=0.328, rely=0.8, height=105, width=105)
+        self.Button11.configure(activebackground="#ff4a98")
+        self.Button11.configure(activeforeground="#000000")
+        self.Button11.configure(background="#ffffff")
+        self.Button11.configure(font=font02)
+        self.Button11.configure(disabledforeground="#a3a3a3")
+        self.Button11.configure(foreground="#000000")
+        self.Button11.configure(highlightbackground="#d9d9d9")
+        self.Button11.configure(highlightcolor="black")
+        self.Button11.configure(text='''Refresh''')
+        self.Button11.configure(pady="0", command=self.reset_counter)
 
         self.Label2_17 = tk.Label(self.Canvas1)
         self.Label2_17.place(relx=0.833, rely=-0.111, height=21, width=64)
