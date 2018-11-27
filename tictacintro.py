@@ -140,9 +140,10 @@ o_win = 0
 class Toplevel2:
 
     def reset_counter(self):
-        x_win = 0
-        o_win = 0
-        self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
+        global x_win,o_win
+        x_win=0
+        o_win=0
+        self.Label6.configure(text=f'''X: 0           O: 0''')
 
     def doRefresh(self):
         global bclick, x_win, o_win
@@ -178,8 +179,6 @@ class Toplevel2:
                 fmsgbox.showinfo("Player X", "Winner is Player X!!!")
             else:
                 fmsgbox.showinfo("Player X", f"Winner is {self.Entry1.get()} !!!")
-            x_win = 0
-            o_win = 0
             x_win += 1
             self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
             self.doRefresh()
@@ -195,8 +194,6 @@ class Toplevel2:
                 fmsgbox.showinfo("Player O", "Winner is Player O!!!")
             else:
                 fmsgbox.showinfo("Player O", f"Winner is {self.Entry2.get()} !!!")
-            x_win = 0
-            o_win = 0
             o_win += 1
             self.Label6.configure(text=f'''X: {x_win}           O: {o_win}''')
             self.doRefresh()
